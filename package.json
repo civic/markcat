@@ -8,7 +8,8 @@
     "clean": "gulp clean",
     "serve": "gulp serve",
     "build:mac": "gulp build:mac",
-    "build:win": "gulp build:win"
+    "build:win": "gulp build:win",
+    "build:linux": "gulp build:linux"
   },
   "repository": {
     "type": "git",

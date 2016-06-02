@@ -141,6 +141,20 @@ gulp.task('build:package:win', function (done) {
   });
 });
 
+gulp.task('build:package:linux', function (done) {
+  return packager({
+    dir: distDir,
+    name: 'MarkCat',
+    arch: 'x64',
+    platform: 'linux',
+    out: releaseDir + '/linux-x64',
+    version: '0.36.4',
+    icon: 'resource/markcat-win.ico',
+    overwrite: true
+  }, function (err, path) {
+    done();
+  });
+});
 
 gulp.task('build:package:darwin', function (done) {
   return packager({
@@ -168,5 +182,11 @@ gulp.task('build:mac', function(callback) {
   runSequence('clean',
               ['build:html', 'build:app-js', 'concat:css', 'build:compile', 'build:install-dependencies'],
               'build:package:darwin',
+              callback);
+});
+gulp.task('build:linux', function(callback) {
+  runSequence('clean',
+              ['build:html', 'build:app-js', 'concat:css', 'build:compile', 'build:install-dependencies'],
+              'build:package:linux',
               callback);
 });
